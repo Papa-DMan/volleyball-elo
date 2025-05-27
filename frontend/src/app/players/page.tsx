@@ -10,15 +10,14 @@ import { PlayersAPI } from '@/libs/api';
 import { Player } from '@/libs/types';
 import PlayersList from '@/components/players/player-list';
 import { UserPlus, Loader } from 'lucide-react';
+import { useSearchParams } from 'next/navigation';
 
 export default function PlayersPage() {
   const [players, setPlayers] = useState<Player[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-//   const searchParams = useSearchParams();
-//   const activeFilter = searchParams.get('active');
-    let activeFilter = "false"
-    activeFilter = "true"
+  const searchParams = useSearchParams();
+  const activeFilter = searchParams.get('active');
 
   useEffect(() => {
     const fetchPlayers = async () => {

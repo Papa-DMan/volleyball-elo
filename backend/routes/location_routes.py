@@ -13,7 +13,7 @@ def create_location(location: LocationCreate, db: Session = Depends(get_db)):
     db.add(db_location)
     db.commit()
     db.refresh(db_location)
-    return db_location
+    return {'data' : db_location}
 
 @router.put("/{location_id}")
 def update_location(location_id: str, data: LocationUpdate, db: Session = Depends(get_db)):
@@ -23,4 +23,9 @@ def update_location(location_id: str, data: LocationUpdate, db: Session = Depend
     for attr, value in data.dict(exclude_unset=True).items():
         setattr(location, attr, value)
     db.commit()
-    return location
+    return {'data' : location}
+
+@router.get("/")
+def get_all_locations(db : Session = Depends(get_db)):
+    db_locations = db.query(Location).all()
+    return {'data' : db_locations}

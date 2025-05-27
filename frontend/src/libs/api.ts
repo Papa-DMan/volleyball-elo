@@ -1,4 +1,4 @@
-import { Player, Location, Session, Game, APIResponse, TeamGenerationOptions } from "./types";
+import { Player, Location, Session, Game, APIResponse, TeamGenerationOptions, LocationPlayer } from "./types";
 
 async function fetchAPI<T>( endpoint : string, options : RequestInit = {}): Promise<T> {
     const url = `http://127.0.0.1:8000${endpoint}`
@@ -37,7 +37,17 @@ export const PlayersAPI = {
         const queryParams = params ? `/?${new URLSearchParams(params as Record<string, string>)}` : '';
         return fetchAPI(`/players${queryParams}`)
     },
-    getById: (id : string) : Promise<APIResponse<Player>> => fetchAPI(`/players/${id}`)
+    getById: (id : string) : Promise<APIResponse<Player>> => fetchAPI(`/players/${id}`),
+}
+
+export const LocationPlayerAPI = {
+  create: (location_id : string, data : Partial<LocationPlayer>): Promise<APIResponse<LocationPlayer>> => fetchAPI(`/location/${location_id}/players`, {method : 'POST', body : JSON.stringify(data)}),
+  update: (location_id : string, id : string, data : Partial<LocationPlayer>) : Promise<APIResponse<LocationPlayer>> => fetchAPI(`/location/${location_id}/players/${id}`, {method : 'PUT', body : JSON.stringify(data)}),
+  getAll: (location_id : string, params? : {active? : boolean}): Promise<APIResponse<LocationPlayer[]>> => {
+      const queryParams = params ? `/?${new URLSearchParams(params as Record<string, string>)}` : '';
+      return fetchAPI(`/location/${location_id}/players${queryParams}`)
+  },
+  getById: (location_id : string, id : string) : Promise<APIResponse<LocationPlayer>> => fetchAPI(`/location/${location_id}/players/${id}`),
 }
 
 export const SessionsAPI = {
@@ -52,10 +62,10 @@ export const SessionsAPI = {
       method: 'POST' 
     }),
     
-  addPlayer: (sessionId: string, playerId: string): Promise<APIResponse<Session>> => 
+  addPlayer: (sessionId: string, player_id: string): Promise<APIResponse<Session>> => 
     fetchAPI(`/sessions/${sessionId}/players/`, { 
       method: 'POST', 
-      body: JSON.stringify({ playerId }) 
+      body: JSON.stringify({ player_id }) 
     }),
     
   removePlayer: (sessionId: string, playerId: string): Promise<APIResponse<Session>> => 
@@ -76,6 +86,7 @@ export const SessionsAPI = {
       method: 'POST', 
       body: JSON.stringify(options) 
     }),
+  getPlayers: (sessionId : string) : Promise<APIResponse<Player[]>> => fetchAPI(`/sessions/${sessionId}/players/`)
 };
 
 export const GamesAPI = {

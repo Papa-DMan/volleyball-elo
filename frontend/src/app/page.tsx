@@ -1,8 +1,8 @@
 // src/app/page.tsx
+'use client'
 import Link from 'next/link';
 
 export default function Home() {  
-
   return (
     <div className="max-w-7xl mx-auto">
       {/* Hero section */}
@@ -19,15 +19,7 @@ export default function Home() {
               href="/sessions/new"
               className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
             >
-              Start New Session
-            </Link>
-          </div>
-          <div className="ml-3 inline-flex">
-            <Link
-              href="/players"
-              className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50"
-            >
-              Manage Players
+              Get Started
             </Link>
           </div>
         </div>
@@ -39,23 +31,14 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-base font-semibold tracking-wide text-indigo-600 uppercase">
-              Streamline Your Volleyball Management
+              Streamline Open Court Volleyball Management
             </h2>
             <p className="mt-2 text-3xl font-extrabold text-gray-900 sm:text-4xl">
-              Designed for volleyball enthusiasts
+              Designed for Volleyball Enthusiasts
             </p>
             <p className="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
-              Start managing your volleyball games efficiently with our intuitive platform.
+              Start enjoying your open court volleyball games with ease on our platform.
             </p>
-          </div>
-          
-          <div className="mt-10">
-            <Link
-              href="/sessions/new"
-              className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
-            >
-              Get Started Now
-            </Link>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-from models.session_player import SessionPlayer
+from backend.models.location_player import SessionPlayer
 from models.player import Player
 def generate_balanced_teams(session_id, db):
     players = (

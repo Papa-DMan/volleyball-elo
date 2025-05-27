@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from fastapi import HTTPException
 from models.session import Session as DbSession
-from models.session_player import SessionPlayer
+from backend.models.location_player import SessionPlayer
 from models.player import Player
 from uuid import UUID
 

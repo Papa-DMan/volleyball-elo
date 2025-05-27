@@ -50,3 +50,15 @@ CREATE TABLE games (
     elo_updated BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMPTZ DEFAULT now()
 );
+
+CREATE TYPE status_type AS ENUM ('active', 'ended');
+
+CREATE TABLE sessions (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    location_id UUID REFERENCES locations(id) ON DELETE SET NULL,
+    start_time TIMESTAMPTZ NOT NULL DEFAULT now(),
+    end_time TIMESTAMPTZ,
+    num_courts INT,
+    players UUID[],
+    status status_type NOT NULL DEFAULT 'active'
+)

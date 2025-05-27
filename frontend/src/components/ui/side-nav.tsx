@@ -20,18 +20,18 @@ export default function SideNav() {
   }
 
   const navItems = [
+    // {
+    //   name: 'Dashboard',
+    //   href: '/',
+    //   icon: Home,
+    // },
     {
-      name: 'Dashboard',
-      href: '/',
-      icon: Home,
-    },
-    {
-      name: 'Sessions',
+      name: 'Your Session',
       href: '/sessions',
       icon: Calendar,
       subItems: [
-        { name: 'Active Sessions', href: '/sessions?status=active' },
-        { name: 'Create Session', href: '/sessions/new' },
+        // { name: 'Active Sessions', href: '/sessions?status=active' },
+        // { name: 'Create Session', href: '/sessions/new' },
       ],
     },
     {
@@ -39,28 +39,28 @@ export default function SideNav() {
       href: '/players',
       icon: Users,
       subItems: [
-        { name: 'Active Players', href: '/players?active=true' },
-        { name: 'Add Player', href: '/players/new' },
+        // { name: 'Active Players', href: '/players?active=true' },
+        // { name: 'Add Player', href: '/players/new' },
       ],
     },
-    {
-      name: 'Games',
-      href: '/games',
-      icon: Trophy,
-      subItems: [
-        { name: 'Active Games', href: '/games/active' },
-        { name: 'Game History', href: '/games' },
-      ],
-    },
-    {
-      name: 'Locations',
-      href: '/locations',
-      icon: MapPin,
-      subItems: [
-        { name: 'All Locations', href: '/locations' },
-        { name: 'Add Location', href: '/locations/new' },
-      ],
-    },
+    // {
+    //   name: 'Games',
+    //   href: '/games',
+    //   icon: Trophy,
+    //   subItems: [
+    //     { name: 'Active Games', href: '/games/active' },
+    //     { name: 'Game History', href: '/games' },
+    //   ],
+    // },
+    // {
+    //   name: 'Locations',
+    //   href: '/locations',
+    //   icon: MapPin,
+    //   subItems: [
+    //     { name: 'All Locations', href: '/locations' },
+    //     { name: 'Add Location', href: '/locations/new' },
+    //   ],
+    // },
   ];
 
   return (

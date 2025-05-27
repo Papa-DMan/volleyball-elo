@@ -1,7 +1,13 @@
 export interface Player {
     id : string;
     name : string;
+}
+
+export interface LocationPlayer {
+    location_id : string;
+    id : string;
     elo : number;
+    active : boolean;
 }
 
 export enum PlayerPreferenceType {
@@ -54,11 +60,9 @@ export interface Session {
     location_id : string
     start_time : string
     end_time? : string
-    players : string[]
+    num_courts : number
     status : 'active' | 'ended'
-    teams? : Team[]
-    created_at : string
-    updated_at : string
+    players : Player[]
 }
 
 export interface APIResponse<T> { 
